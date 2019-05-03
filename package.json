@@ -1,0 +1,26 @@
+{
+  "name": "opti-cli",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint '*.js'",
+    "test": "ava"
+  },
+  "eslintConfig": {
+    "extends": [
+      "@gmartigny/eslint-config"
+    ]
+  },
+  "author": "GMartigny <guillaume.martigny@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "execa": "^1.0.0",
+    "meow": "^5.0.0"
+  },
+  "devDependencies": {
+    "@gmartigny/eslint-config": "^1.2.3",
+    "eslint": "^5.16.0"
+  }
+}
