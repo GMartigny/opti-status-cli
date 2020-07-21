@@ -1,6 +1,6 @@
 {
     "name": "opti-status-cli",
-    "version": "0.0.0",
+    "version": "1.0.0",
     "description": "CLI version of opti-status",
     "bin": {
         "opti-status": "src/cli"
