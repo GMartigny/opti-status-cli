@@ -1,26 +1,45 @@
 {
-  "name": "opti-cli",
-  "version": "0.0.1",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "lint": "eslint '*.js'",
-    "test": "ava"
-  },
-  "eslintConfig": {
-    "extends": [
-      "@gmartigny/eslint-config"
-    ]
-  },
-  "author": "GMartigny <guillaume.martigny@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "chalk": "^2.4.2",
-    "execa": "^1.0.0",
-    "meow": "^5.0.0"
-  },
-  "devDependencies": {
-    "@gmartigny/eslint-config": "^1.2.3",
-    "eslint": "^5.16.0"
-  }
+    "name": "opti-status-cli",
+    "version": "0.0.0",
+    "description": "CLI version of opti-status",
+    "bin": {
+        "opti-status": "src/cli"
+    },
+    "main": "index.js",
+    "scripts": {
+        "lint": "eslint '*.js'",
+        "test": "ava"
+    },
+    "eslintConfig": {
+        "extends": [
+            "@gmartigny/eslint-config"
+        ]
+    },
+    "author": "GMartigny <guillaume.martigny@gmail.com>",
+    "license": "MIT",
+    "dependencies": {
+        "chalk": "^4.1.0",
+        "execa": "^4.0.3",
+        "meow": "^7.0.1",
+        "opti-status": "^1.0.0"
+    },
+    "devDependencies": {
+        "@gmartigny/eslint-config": "^1.6.0",
+        "ava": "^3.10.1",
+        "eslint": "^7.5.0"
+    },
+    "directories": {
+        "test": "test"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/GMartigny/opti-status-cli.git"
+    },
+    "keywords": [
+        "CLI"
+    ],
+    "bugs": {
+        "url": "https://github.com/GMartigny/opti-status-cli/issues"
+    },
+    "homepage": "https://github.com/GMartigny/opti-status-cli#readme"
 }

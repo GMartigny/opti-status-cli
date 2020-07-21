@@ -1,0 +1,49 @@
+#!/usr/bin/env node
+const execa = require("execa");
+const meow = require("meow");
+const chalk = require("chalk");
+const { statuses } = require("opti-status");
+
+const cli = meow(`The file passed as argument should export a function.
+    Usage
+        $ opti <file> <...file>
+    
+    Example
+        $ opti function.js
+`);
+
+const ok = chalk.green;
+const ko = chalk.red;
+const format = (isOk, name, message) => `  - ${isOk ? "✔️" : "❌"}${name}: ${(isOk ? ok : ko)(message)}`;
+
+// eslint-disable-next-line no-console
+const { log } = console;
+
+const run = async (fileList) => {
+    if (!fileList.length) {
+        cli.showHelp();
+    }
+
+    const child = execa.node("./src/check.js", fileList, {
+        nodeOptions: ["--allow-natives-syntax"],
+        stdio: [undefined, undefined, undefined, "ipc"],
+    });
+    child.on("message", (message) => {
+        Object.keys(message)
+            .forEach((file) => {
+                log(chalk.blue(`> ${chalk.bold(file)}`));
+                const functions = message[file];
+                Object.keys(functions)
+                    .forEach((name) => {
+                        // eslint-disable-next-line no-bitwise
+                        const success = statuses.isOptimized & functions[name].status;
+                        log(format(success, name, functions[name].message));
+                        if (!success) {
+                            process.exitCode = 1;
+                        }
+                    });
+            });
+    });
+};
+
+run(cli.input);
